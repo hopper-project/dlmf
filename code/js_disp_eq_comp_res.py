@@ -1,5 +1,10 @@
-import argparse
+#processes a ranked list of equation pairs and generates a html table with equation images
+#equation images are linked to DLMF source page
+#input is a tsv file where the first two columns are the DLMF equation enumerators and the third column is the similarity value
+#kk, december 9, 2016
 
+
+import argparse
 
 def create_js_file(res_file, png_folder):
 
@@ -15,9 +20,10 @@ def create_js_file(res_file, png_folder):
 
         eq1_path = png_folder+"/"+eq[0].split(".")[0]+"/"+eq[0].split(".E")[0]+"/"+eq[0]+".png"
         eq2_path = png_folder + "/" + eq[1].split(".")[0] + "/" + eq[1].split(".E")[0] + "/" + eq[1]+".png"
-
         comp_result = eq[2]
+        
         js_file.write("{\"eq1\": \""+eq1_path+"\", \"eq2\": \""+eq2_path+"\", \"sim_val\": \""+str(comp_result)+"\"},\n")
+    
     js_file.write("];")
     js_file.close()
 
@@ -26,8 +32,9 @@ def get_arguments():
     parser.add_argument('--res_file', type=str, default="dlmf2_res_cos_top100",
                         help='File list containing the path of the .tpl files.')
     parser.add_argument('--png_folder', type=str, default="../raw",
-                        help='Directory path containing equation png files')
+                        help='Directory path containing equation png files.')
     return parser.parse_args()
+
 def main(args):
     create_js_file(args.res_file,args.png_folder)
 args = get_arguments()
