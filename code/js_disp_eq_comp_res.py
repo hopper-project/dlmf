@@ -1,6 +1,8 @@
-#processes a ranked list of equation pairs and generates a html table with equation images
-#equation images are linked to DLMF source page
-#input is a tsv file where the first two columns are the DLMF equation enumerators and the third column is the similarity value
+#processes a ranked list of equation pairs and generates a JavaScript variable file
+#the file is used to display local equation images in an html table
+#It requires two input files:
+# 1. tsv file where the first two columns are the DLMF equation enumerators and the third column is the similarity value
+# 2. path of the local directory where equation images reside
 #kk, december 9, 2016
 
 
@@ -28,11 +30,11 @@ def create_js_file(res_file, png_folder):
     js_file.close()
 
 def get_arguments():
-    parser = argparse.ArgumentParser(description="Create HTML Table of Similar Equations")
+    parser = argparse.ArgumentParser(description="Create JavaScript variable file")
     parser.add_argument('--res_file', type=str, default="dlmf2_res_cos_top100",
-                        help='File list containing the path of the .tpl files.')
-    parser.add_argument('--png_folder', type=str, default="../raw",
-                        help='Directory path containing equation png files.')
+                        help='tsv file that contains ranked list of equation pairs and their simlarity score.')
+    parser.add_argument('--png_dir', type=str, default="../raw",
+                        help='directory path containing equation png files.')
     return parser.parse_args()
 
 def main(args):
