@@ -1,6 +1,6 @@
 #processes a ranked list of equation tuples and generates a html file
 #input is a tsv file where the first two columns are the DLMF equation enumerators and the third column is the similarity value
-
+#kk 12/9/16
 import argparse
 
 def create_html_table(res_file):
