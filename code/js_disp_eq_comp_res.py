@@ -31,7 +31,7 @@ def create_js_file(res_file, png_folder):
 
 def get_arguments():
     parser = argparse.ArgumentParser(description="Create JavaScript variable file")
-    parser.add_argument('--res_file', type=str, default="dlmf2_res_cos_top100",
+    parser.add_argument('--res_file', type=str, default="dlmf_res_cos_top100",
                         help='tsv file that contains ranked list of equation pairs and their simlarity score.')
     parser.add_argument('--png_dir', type=str, default="../raw",
                         help='directory path containing equation png files.')
