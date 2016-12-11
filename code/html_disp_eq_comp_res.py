@@ -1,3 +1,6 @@
+#processes a ranked list of equation tuples and generates a html file
+#input is a tsv file where the first two columns are the DLMF equation enumerators and the third column is the similarity value
+
 import argparse
 
 def create_html_table(res_file):
@@ -33,8 +36,8 @@ def create_html_table(res_file):
    
 def get_arguments():
     parser = argparse.ArgumentParser(description="Create HTML Table of Ranked Equation Pairs")
-    parser.add_argument('--res_file', type=str, default="dlmf2_res_cos_top100",
-                        help='tsv file that contains ranked list of equaiton pairs and their simlarity score')
+    parser.add_argument('--res_file', type=str, default="dlmf_res_cos_top100",
+                        help='tsv file that contains ranked list of equation pairs and their simlarity score')
     return parser.parse_args()
 
 
